@@ -1,6 +1,8 @@
-[ ]in Docker:
-    [ ] GET endpoint, which give back count of api calls to its endpoint
-    [ ] connected postgres db
+in Docker:
+
+[ ] GET endpoint, which give back count of api calls to its endpoint
+
+[ ] connected postgres db in separate Container
 
 [ ] served from Azure
 
