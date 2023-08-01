@@ -1,6 +1,9 @@
 import psycopg2
 
 
+# TODO HIER WEITER, das mal ausprobieren: https://stackoverflow.com/questions/73355454/how-to-connect-python-to-postgres-through-docker-compose
+HOST_ADDRESS = 'db'
+
 def select_count_from_first_row():
     connection = None
     try:
@@ -8,7 +11,7 @@ def select_count_from_first_row():
         connection = psycopg2.connect(
             user="stefan",
             password="123",
-            host="localhost",
+            host=HOST_ADDRESS,
             port="5432",
             database="postgres"
         )
@@ -46,7 +49,7 @@ def increment_table_counter(count):
         connection = psycopg2.connect(
             user="stefan",
             password="123",
-            host="localhost",
+            host=HOST_ADDRESS,
             port="5432",
             database="postgres"
         )
@@ -77,7 +80,7 @@ def create_table_and_insert_row():
         connection = psycopg2.connect(
             user="stefan",
             password="123",
-            host="localhost",
+            host=HOST_ADDRESS,
             port="5432",
             database="postgres"
         )
