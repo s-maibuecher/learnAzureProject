@@ -15,7 +15,9 @@ services:
     image: postgres
     ports:
       - "5432:5432"
+    env_file:
+      - .env
     environment:
       POSTGRES_USER: stefan
       POSTGRES_PASSWORD: 123
-      POSTGRES_DB: postgres
+      POSTGRES_HOST_AUTH_METHOD: trust

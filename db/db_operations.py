@@ -1,19 +1,21 @@
+import os
+
 import psycopg2
+from dotenv import load_dotenv
 
+load_dotenv()
 
-# TODO HIER WEITER, das mal ausprobieren: https://stackoverflow.com/questions/73355454/how-to-connect-python-to-postgres-through-docker-compose
-HOST_ADDRESS = 'db'
 
 def select_count_from_first_row():
     connection = None
     try:
         # Connect to the 'DB_EP_A' database
         connection = psycopg2.connect(
-            user="stefan",
-            password="123",
-            host=HOST_ADDRESS,
-            port="5432",
-            database="postgres"
+            user=os.getenv("DB_USER"),
+            password=os.getenv("DB_PASSWORD"),
+            host=os.getenv("DB_HOST"),
+            port=os.getenv("DB_PORT"),
+            database=os.getenv("DB_NAME"),
         )
 
         cursor = connection.cursor()
@@ -47,11 +49,11 @@ def increment_table_counter(count):
     try:
         # Connect to the 'DB_EP_A' database
         connection = psycopg2.connect(
-            user="stefan",
-            password="123",
-            host=HOST_ADDRESS,
-            port="5432",
-            database="postgres"
+            user=os.getenv("DB_USER"),
+            password=os.getenv("DB_PASSWORD"),
+            host=os.getenv("DB_HOST"),
+            port=os.getenv("DB_PORT"),
+            database=os.getenv("DB_NAME"),
         )
 
         cursor = connection.cursor()
@@ -76,35 +78,38 @@ def increment_table_counter(count):
 def create_table_and_insert_row():
     connection = None
     try:
-        # Replace the connection parameters with your PostgreSQL database credentials
+        # Replace the connection parameters with your PostgresSQL database credentials
         connection = psycopg2.connect(
-            user="stefan",
-            password="123",
-            host=HOST_ADDRESS,
-            port="5432",
-            database="postgres"
+            user=os.getenv("DB_USER"),
+            password=os.getenv("DB_PASSWORD"),
+            host=os.getenv("DB_HOST"),
+            port=os.getenv("DB_PORT"),
+            database=os.getenv("DB_NAME"),
         )
 
         cursor = connection.cursor()
 
         # Create the table if it doesn't exist
-        create_table_query = '''
+        create_table_query = """
         CREATE TABLE IF NOT EXISTS endpoint_count (
             ID SERIAL PRIMARY KEY,
             Count INTEGER
         )
-        '''
+        """
         cursor.execute(create_table_query)
 
         # Insert one row with Count=0
-        insert_row_query = '''
+        insert_row_query = """
         INSERT INTO endpoint_count (Count)
         VALUES (0)
-        '''
+        """
         cursor.execute(insert_row_query)
 
         connection.commit()
-        print("Table 'endpoint_count' created, and one row inserted successfully!", flush=True)
+        print(
+            "Table 'endpoint_count' created, and one row inserted successfully!",
+            flush=True,
+        )
 
     except (Exception, psycopg2.Error) as error:
         print("***" * 20)

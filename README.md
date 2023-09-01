@@ -19,6 +19,9 @@ in Docker:
 
 
 # endpunkt soll die db automatisch initialisieren.. erst local ausprobieren
+# TODO HIER WEITER: ah mist, gar nicht sicher, ob das jetzt rein in docker läuft, hatte local app laufen. 
+#  nochmal fresh testen
+
 
 #  $ docker run -itd -e POSTGRES_USER=stefan -e POSTGRES_PASSWORD=123 -p 5432:5432 -v C:/work/projects/docker-volumes/postgres:/var/lib/postgresql/data --name stefanpostgres postgres
 #  im container terminal: PGPASSWORD=123 psql -U stefan

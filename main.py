@@ -4,7 +4,6 @@ from db.db_operations import select_count_from_first_row, increment_table_counte
 
 app = FastAPI()
 
-
 @app.get("/")
 def endpoint_a_root():
     count = select_count_from_first_row()
@@ -16,4 +15,3 @@ def endpoint_a_root():
 def endpoint_a_root():
     create_table_and_insert_row()
     return {"message": f"Table initialized"}
-
