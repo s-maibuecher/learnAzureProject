@@ -7,8 +7,6 @@ from db.db_operations import (
 )
 
 
-# TODO nochmal gucken, ob das jetzt mit den gloabls funktioniert. und docker übernimmt die Änderungen nicht
-
 class GlobalVariables:
     def __int__(self):
         print("GlobalVariables set up")
